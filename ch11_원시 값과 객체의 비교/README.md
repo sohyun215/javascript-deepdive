@@ -1,0 +1,324 @@
+# 원시 값과 객체의 비교
+
+[데이터 타입](https://github.com/sohyun215/javascript-deepdive/tree/main/ch06_%EB%8D%B0%EC%9D%B4%ED%84%B0%20%ED%83%80%EC%9E%85#%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%83%80%EC%9E%85): 원시 타입 vs 객체 타입
+
+- 원시 값은 변경 불가능한 값이다. 객체는 변경 가능한 값이다.
+
+- 원시 값을 변수에 할당하면 변수에는 실제 값이 저장된다. 객체를 변수에 할당하면 변수에는 참조 값이 저장된다.
+- 값에 의한 전달: 원시 값을 갖는 변수를 다른 변수에 할당하면 원본의 **원시 값이 복사되어 전달된다.**
+    
+  참조에 의한 전달: 객체를 가리키는 변수를 다른 변수에 할당하면 원본의 **참조 값이 복사되어 전달된다.**
+    
+
+<br>
+
+# 원시 값
+## 1. 변경 불가능한 값
+> 한번 생성된 원시 값은 읽기 전용 값으로서 변경할 수 없다.
+
+
+- 변경 불가능하다는 것은 변수가 아니라 값에 대한 진술이다.
+
+- 상수: 재할당이 금지된 변수
+
+```jsx
+const o = {};
+
+// const 키워드를 사용해 선언한 변수에 할당한 원시 값(상수)은 변경할 수 없다.
+// 하지만 const 키워드를 사용해 선언한 변수에 할당한 객체는 변경할 수 있다.
+o.a = 1;
+console.log(o); // {a: 1}
+```
+
+- 값의 `불변성`: 원시 값을 할당한 변수에 새로운 원시 값을 재할당하면 **새로운 메모리 공간을 확보하고 재할당한 원시 값을 저장한 후, 변수는 새롭게 재할당한 원시 값을 가리킨다.** 이때 변수가 참조하던 메모리 공간의 주소가 바뀐다.
+
+  ![Untitled](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/1b5a7fa8-1536-4620-92de-98089c2ee7a8/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230319%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230319T074335Z&X-Amz-Expires=86400&X-Amz-Signature=d1f54a07af51fe36b4b549f397918fd2b7939868212d190bbdf83185a6297b98&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject)
+
+- 변수가 참조하던 메모리 공간의 주소가 변경된 이유: 변수에 할당된 원시 값이 변경 불가능한 값이기 때문이다.
+
+- 만약 원시 값이 변경 가능한 값이라면 변수가 가리키던 메모리 공간의 주소를 바꿀 필요 없이 원시 값 자체를 변경하면 된다.
+    
+    ![Untitled](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/106acf96-adcb-4345-a594-c9b3d805dba4/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230319%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230319T080554Z&X-Amz-Expires=86400&X-Amz-Signature=e0d2fce2dbce3be31d6b4c4a245fc16c64d601195482b882c518029416c168ac&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject)
+    
+
+- 불변성을 갖는 원시 값을 할당한 변수는 `재할당` 이외에 변수 값을 변경할 수 있는 방법이 없다.
+
+<br><br>
+
+## 2. 문자열과 불변성
+
+- 문자열은 0개 이상의 문자로 이뤄진 집합을 말하며, 1개의 문자는 2바이트의 메모리 공간에 저장된다. 
+
+  따라서 문자열은 몇 개의 문자로 이뤄졌느냐에 따라 필요한 [메모리 공간의 크기가 결정](https://github.com/sohyun215/javascript-deepdive/tree/main/ch06_%EB%8D%B0%EC%9D%B4%ED%84%B0%20%ED%83%80%EC%9E%85#691-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%83%80%EC%9E%85%EC%97%90-%EC%9D%98%ED%95%9C-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EA%B3%B5%EA%B0%84%EC%9D%98-%ED%99%95%EB%B3%B4%EC%99%80-%EC%B0%B8%EC%A1%B0)된다. 숫자 값은 1도, 100000도 동일한 8바이트가 필요하지만 문자열의 경우 1개의 문자로 이뤄진 문자열은 2바이트, 10개의 문자로 이뤄진 문자열은 20바이트가 필요하다.
+
+- 자바스크립트의 문자열은 원시 타입이며 변경 불가능하다.
+    
+    ```jsx
+    var str = 'Hello';
+    str = 'world';
+    ```
+    
+    첫 번째 문이 실행되면 식별자 str은 문자열 ‘Hello’가 저장된 메모리 공간의 첫 번째 메모리 셀 주소를 가리킨다.
+    두 번째 문이 실행되면 새로운 문자열 ‘world’를 메모리에 생성하고 식별자 str은 이것을 가리킨다.
+    
+- 문자열은 유사 배열 객체이면서 이터러블이다. ⇒ 배열과 유사하게 각 문자에 접근할 수 있다.
+    
+    ### ✔️ 유사 배열 객체
+    
+    > 배열처럼 인덱스로 프로퍼티 값에 접근할 수 있고 length 프로퍼티를 갖는 객체
+    > 
+    
+    ```jsx
+    var str = 'string';
+    console.log(str[0]);
+    // 문자열이 객체처럼 동작
+    console.log(str.length);
+    console.log(str.toUpperCase());
+    ```
+    
+    원시 값을 객체처럼 사용하면 원시 값을 감싸는 래퍼 객체로 자동 변환된다.
+    
+  <br>
+
+  ```jsx
+  str[0] = 'S';
+  console.log(str); // string
+  ```
+
+- 이미 생성된 문자열의 일부 문자를 변경해도 반영되지 않는다. ⇒ 원시 값은 예기치 못한 변경으로부터 자유롭다: 데이터의 신뢰성 보장
+
+<br>
+<br>
+
+## 3. 값에 의한 전달
+> #### ✔️ 변수에 원시 값을 갖는 변수를 할당하면 할당받는 변수에는 할당되는 변수의 원시 값이 복사되어 전달된다.
+<br>
+
+### 변수에 변수를 할당했을 때 무엇이 어떻게 전달되는가?
+
+```jsx
+var score = 80;
+var copy = score;
+```
+
+`copy = score` : score는 변수 값 80으로 평가되므로 copy 변수에도 80이 할당된다. 이때 새로운 숫자 값 80이 생성되어 copy 변수에 할당 된다.
+
+
+
+  <img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/22375069-2310-4487-bbd7-8fa626334814/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230319%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230319T081642Z&X-Amz-Expires=86400&X-Amz-Signature=b0a66f946409767cd53d0f8abe8e63723f29f5678980574bd3b7d8ffa99e27ee&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject" width=450px>
+
+이때 score 변수와 copy 변수의 값 80은 다른 메모리 공간에 저장된 별개의 값이다. ⇒ score 변수의 값을 변경해도 copy 변수의 값에는 어떠한 영향도 주지 않는다.
+
+```jsx
+score = 100;
+console.log(score, copy); // 100 80
+```
+
+ECMAScript 사양에는 변수를 통해 메모리를 어떻게 관리해야 하는지 명확하게 정의되어 있지 않다. 따라서 실제 자바스크립트 엔진을 구현하는 제조사에 따라 실제 내부 동작 방식은 미묘한 차이가 있을 수 있다.
+
+#### 1️⃣ 새로운 80을 생성(복사)해서 메모리 주소를 전달하는 방식. 할당 시점에 두 변수가 기억하는 메모리 주소가 다르다.
+![Untitled](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/70ebb848-bbba-473b-b5de-8c53d0f9f847/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230319%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230319T081754Z&X-Amz-Expires=86400&X-Amz-Signature=1b833c2817aeae2ec9051af87abfb207a90c34d08bb9cd0cc2227ee21981c15a&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject)
+
+
+
+1️⃣에서는 변수에 원시 값을 갖는 변수를 할당하면 원시 값이 복사되는 것으로 표현했다. 
+
+
+
+#### 2️⃣ score의 변수값 80의 메모리 주소를 그대로 전달하는 방식. 할당 시점에 두 변수가 기억하는 메모리 주소가 같다.
+![Untitled](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/760add66-17ff-4fc9-9101-e450725749a6/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230319%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230319T081831Z&X-Amz-Expires=86400&X-Amz-Signature=465c67de4afd5df801b43fe5d6fc4b7b5de21dd08f92f17d308afaa4b0f032e9&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject)
+2️⃣: 변수에 원시 값을 갖는 변수를 할당하는 시점에는 두 변수가 같은 원시 값을 참조하다가 어느 한쪽의 변수에 재할당이 이뤄졌을 때 비로소 새로운 메모리 공간에 재할당된 값을 저장하도록 동작할 수도 있다. (파이썬의 동작방식)
+
+<br>
+
+- **“값에 의한 전달”도 사실은 값을 전달하는 것이 아니라 메모리 주소를 전달한다. 단, 전달된 메모리 주소를 통해 메모리 공간에 접근하면 값을 참조할 수 있다.**
+
+🌟 1️⃣의 방식이든 2️⃣의 방식이든, 두 변수의 원시 값은 서로 다른 메모리 공간에 저장된 별개의 값이 되어 어느 한쪽에서 재할당을 통해 값을 변경하더라도 서로 간섭할 수 없다.
+
+<br>
+<br>
+
+# 객체
+
+- 객체는 프로퍼티의 개수가 정해져 있지 않으며, 동적으로 추가되고 삭제할 수 있다.
+    - 원시 값과 같이 `확보해야 할 메모리 공간의 크기를 사전에 정해둘 수 없다.`
+- 객체를 관리하는 방식이 원시 값과 비교해서 복잡하고 구현 방식도 브라우저 제조사마다 다를 수 있다.
+
+<br>
+
+### ✔️ 자바스크립트 객체의 관리 방식
+자바스크립트 객체는 프로퍼티 키를 인덱스로 사용하는 해시 테이블이라고 생각할 수 있다.
+
+대부분의 자바스크립트 엔진은 해시 테이블과 유사하지만 높은 성능을 위해 일반적인 해시 테이블보다 나은 방법으로 객체를 구현한다.
+
+`클래스 기반 객체지향 프로그래밍 언어`: 사전에 정의된 클래스를 기반으로 객체를 생성한다. ⇒ 객체를 생성하기 이전에 이미 프로퍼티와 메서드가 정해져 있으며 그대로 객체를 생성한다. 객체가 생성된 이후 프로퍼티를 삭제하거나 추가할 수 없다.
+
+`자바스크립트`: 클래스 없이 객체를 생성할 수 있으며 동적으로 프로퍼티와 메서드를 추가할 수 있다. 편리하지만 성능 면에서 클래스 기반 객체지향 프로그래밍 언어의 객체보다 생성과 프로퍼티 접근에 비용이 더 많이 든다.
+
+따라서 V8 자바스크립트 엔진에서는 프로퍼티에 접근하기 위해 동적 탐색 대신 **히든 클래스**라는 방식을 사용해 C++ 객체의 프로퍼티에 접근하는 정도의 성능을 보장한다. 
+
+히든 클래스는 자바와 같이 고정된 객체 레이아웃과 유사하게 동작한다. 
+
+<br>
+
+## 1. 변경 가능한 값
+
+> 객체(참조) 타입의 값은 변경 가능한 값이다.
+> 
+
+```jsx
+// 할당이 이뤄지는 시점에 객체 리터럴이 해석되고, 그 결과 객체가 생성된다.
+var person = {
+  name: 'Lee'
+};
+```
+
+- 객체를 할당한 변수가 기억하는 메모리 주소를 통해 메모리 공간에 접근하면 **참조 값**에 접근할 수 있다.
+    - `참조 값`: 생성된 객체가 저장된 메모리 공간의 주소, 그 자체
+
+      <img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/2d8c91d7-4bd7-41c1-bd86-466bb5377033/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230319%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230319T082357Z&X-Amz-Expires=86400&X-Amz-Signature=3627e1c888e437358006e40888e144a222285bda396051f4afcb66c23ba66cfc&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject" width=300px>
+
+
+| | 원시 값을 할당한 변수| 객체를 할당한 변수|
+|--- |---|---|
+|참조|`원시 값`에 접근 | `참조 값`을 통해 `실제 객체에 접근`
+|표현| “변수는 ❔값을 갖는다”, “변수의 값은 ❔다” | “변수는 객체를 참조하고 있다”,  “변수는 객체를 가리키고 있다”
+
+
+- 객체는 변경 가능한 값이므로 객체를 할당한 변수는 재할당 없이 객체를 직접 변경할 수 있다.
+    - 재할당 없이 프로퍼티를 동적으로 추가할 수도 있고, 값을 갱신할 수도 있으며, 프로퍼티 자체를 삭제할 수도 있다.
+    - 객체를 할당한 변수에 재할당을 하지 않았으므로 객체를 할당한 변수의 참조 값은 변경되지 않는다.
+    
+    ```jsx
+    var person = {
+      name: 'Lee'
+    };
+    
+    person.name = 'Kim';
+    
+    person.address = 'Seoul';
+    
+    console.log(person); // {name: "Kim", address: "Seoul"}
+    ```
+    
+
+    <img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/21d6fd64-598e-40d9-8a3b-1b65c49fe1dc/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230319%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230319T082517Z&X-Amz-Expires=86400&X-Amz-Signature=2dc2891204e52fc6aec31fe63f9c3d8a06982bffb733313b6356a10576371133&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject" width=300px>
+
+- 객체를 생성하고 관리하는 방식은 매우 복잡하며 비용이 많이 드는 일이다.
+    - 메모리 사용의 효율성과 성능을 위해 객체는 변경 가능한 값으로 설계되어 있다.
+    - 이러한 구조적 단점에 따른 부작용: 원시 값과 다르게 `여러 개의 식별자가 하나의 객체를 공유`할 수 있다.
+    
+<br>
+
+### 🌟 얕은 복사와 깊은 복사
+
+
+
+```jsx
+const o = { x: {y: 1 } };
+
+// 얕은 복사
+const c1 = { ...o }; // 스프레드 문법
+console.log(c1 === o);     // false
+console.log(c1.x === o.x); // true
+
+// lodash의 cloneDeep을 사용한 깊은 복사
+const _ = require('lodash');
+const c2 = _.cloneDeep(o);
+console.log(c2 === o);     // false
+console.log(c2.x === o.x); // false
+```
+
+- 얕은 복사와 깊은 복사로 생성된 객체는 원본과는 다른 객체다. 즉, 원본과 복사본은 참조 값이 다른 별개의 객체다.
+
+`얕은 복사`: 객체에 중첩되어 있는 객체의 경우 참조 값을 복사 (한 단계까지만 복사)
+
+`깊은 복사`: 객체에 중첩되어 있는 객체까지 모두 복사해서 원시 값처럼 완전한 복사본을 만든다.
+
+- 원시 값을 할당한 변수를 다른 변수에 할당하는 것을 깊은 복사, 객체를 할당한 변수를 다른 변수에 할당하는 것을 얕은 복사라고 부르는 경우도 있다.
+
+```jsx
+const v = 1;
+
+// 깊은 복사라고 부르기도 한다.
+const c1 = v;
+console.log(c1 === v); // true
+
+const o = { x: 1 };
+// 얕은 복사
+const c2 = o;
+console.log(c2 === o); // true
+```
+
+<br>
+
+## 2. 참조에 의한 전달
+
+> #### ✔️ 객체를 가리키는 변수(원본)를 다른 변수(사본)에 할당하면 **원본의 참조 값이 복사**되어 전달된다.
+> 
+
+```jsx
+var person = {
+  name: 'Lee'
+};
+
+// 참조 값을 복사(얕은 복사)
+var copy = person;
+```
+
+<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/c232da29-167d-432d-a55b-0c9c84cf0f4d/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230319%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230319T082952Z&X-Amz-Expires=86400&X-Amz-Signature=a4e2dd9fa753c890e794b793047545e479193569a2caf08357b2865dba4d3acd&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject" width=500px>
+
+원본 person과 사본 copy는 `저장된 메모리 주소는 다르지만 동일한 참조 값을 갖는다.`   
+⇒ 모두 동일한 객체를 가리킨다. (= 두 개의 식별자가 하나의 객체를 공유한다.)   
+⇒ 어느 한쪽에서 객체를 변경하면 서로 영향을 주고받는다.
+
+```jsx
+// copy와 person은 동일한 객체를 참조
+console.log(copy === person); // true
+
+copy.name = 'Kim';
+
+person.address = 'Seoul';
+
+console.log(person);  // {name: "Kim", address: "Seoul"}
+console.log(copy);    // {name: "Kim", address: "Seoul"}
+```
+
+`값에 의한 전달` 과 `참조에 의한 전달` 은 식별자가 기억하는 메모리 공간에 저장되어 있는 값을 복사해서 전달한다는 면에서 동일하다. 다만 식별자가 기억하는 메모리 공간(=변수)에 저장되어 있는 값이 원시 값이나 참조 값이냐의 차이만 있을 뿐이다. 
+
+⇒ 자바스크립트에는 참조에 의한 전달은 존재하지 않고 값에 의한 전달만이 존재한다고 말할 수 있다.
+
+```jsx
+자바스크립트의 이 같은 동작 방식을 설명하는 정확한 용어가 존재하지 않는다.
+이런 이유로 `공유에 의한 전달`이라고 표현하는 경우도 있다. 
+하지만 이 용어 또한 ECMAScript 사양에 정의된 자바스크립트의 공식적인 용어는 아니며 자바스크립트의 동작 방식을 정확히 설명하지 못한다.
+
+=> 이 책에서는 전달되는 값의 종류가 원시 값인지 참조 값인지 구별해서 강조하는 의미에서 값에 의한 전달과 참조에 의한 전달로 구분하여 부른다. 
+ 
+```
+
+<br>
+
+```jsx
+// 객체 리터럴은 평가될 때마다 객체를 생성한다.
+var person1 = {
+  name: 'Lee'
+};
+
+var person2 = {
+  name: 'Lee'
+};
+
+console.log(person1 === person2); // false
+console.log(person1.name === person2.name); // true
+```
+
+`=== 일치 비교 연산자`는 변수에 저장되어 있는 값을 타입 변환하지 않고 비교한다.
+
+📍 객체를 할당한 변수는 참조 값을 가지고 있고, 원시 값을 할당한 변수는 원시 값 자체를 가지고 있다.
+
+따라서 일치 비교 연산자를 통해 객체를 할당한 변수를 비교하면 참조 값을 비교하고, 원시 값을 할당한 변수를 비교하면 원시 값을 비교한다.
+
+- person1 변수와 person2 변수가 가리키는 객체는 비록 내용은 같지만 다른 메모리에 저장된 별개의 객체다. ⇒ 두 변수의 참조 값은 전혀 다른 값이다. 
+
+- 하지만 프로퍼티 값을 참조하는 person1.name과 person2.name은 값으로 평가될 수 있는 표현식이다. 두 표현식 모두 원시 값 ‘Lee’로 평가된다.
