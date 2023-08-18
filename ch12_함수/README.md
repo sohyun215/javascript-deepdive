@@ -114,18 +114,18 @@ var add = (x, y) => x + y;
 
 ### **함수 선언문은 표현식이 아닌 문이다.**
 
-  - 표현식이 아닌 문은 변수에 할당할 수 없다.
+- 표현식이 아닌 문은 변수에 할당할 수 없다.
 
-  ```jsx
-  var add = function add(x, y) {
-    return x + y;
-  };
+```jsx
+var add = function add(x, y) {
+  return x + y;
+};
 
-  console.log(add(2, 5)); //7
-  ```
+console.log(add(2, 5)); //7
+```
 
-  - 위 예제는 함수 선언문이 변수에 할당되는 것처럼 보인다.
-    > ❗️ 자바스크립트 엔진이 코드의 문맥에 따라 동일한 함수 리터럴을 `표현식이 아닌 문인 함수 선언문으로 해석`하는 경우와 `표현식인 문인 함수 리터럴 표현식으로 해석`하는 경우가 있기 때문
+- 위 예제는 함수 선언문이 변수에 할당되는 것처럼 보인다.
+  > ❗️ 자바스크립트 엔진이 코드의 문맥에 따라 동일한 함수 리터럴을 `표현식이 아닌 문인 함수 선언문으로 해석`하는 경우와 `표현식인 문인 함수 리터럴 표현식으로 해석`하는 경우가 있기 때문
 
 ### ✔️ 자바스크립트 엔진의 기명 함수 리터럴 해석
 
@@ -159,14 +159,14 @@ bar(); // ReferenceError: bar is not defined
 => 함수 몸체 외부에서는 함수 이름으로 함수를 참조할 수 없으므로 함수 몸체 외부에서는 함수 이름으로 함수를 호출할 수 없다  
 => 함수를 가리키는 식별자가 없다는 것과 마찬가지
 
-<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/78f5a0b6-4aff-4e73-8a12-3b221ddd29b5/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230321%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230321T035251Z&X-Amz-Expires=86400&X-Amz-Signature=b772bff1c9eb2aca17920eaaf0b2d85eceab9c0c7bc6b4b832412ea44df2f6a5&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject" width=400px>
+<img width="400" alt="image" src="https://github.com/sohyun215/javascript-deepdive/assets/79398566/fed09c82-4fed-4b8e-9d54-9025dc551a4b">
 
 - 함수 이름 bar는 함수 몸체 내에서만 참조할 수 있는 식별자이므로 함수를 호출할 수 없다.
 
 <br>
 
 - why❓ 식별자 foo를 선언한 적도 없고 할당한 적도 없는데 foo라는 이름으로 호출 할 수 있었다.
-  <img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/acd1431a-405a-4d82-b4cc-46d880b07e78/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230321%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230321T035401Z&X-Amz-Expires=86400&X-Amz-Signature=7493c697a546f0b732ff87484fd5a26a22d2add7b9c872567ef29aa479a85344&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject" width=400px>
+  <img width="400" alt="image" src="https://github.com/sohyun215/javascript-deepdive/assets/79398566/d1140105-94dc-45c8-b85e-24d2bca0ce3e">
 
 - 자바스크립트 엔진은 **함수 선언문** 을 해석해 함수 객체를 생성한다.
 
@@ -405,53 +405,55 @@ console.log(add("a", "b")); // TypeError: 인수는 모두 숫자 값이어야 �
   }
   ```
 
-
 ## 12.5.3 매개변수의 최대 개수
 
 - ECMAScript 사양에서는 매개변수의 최대 개수에 대해 명시적으로 제한하고 있지 않다.
 
 - 함수의 매개변수는 코드를 이해하는 데 방해되는 요소이므로 이상적인 매개변수 개수는 0개이며, 적을수록 좋다
-=> 최대 3개 이상을 넘지 않는 것을 권장
+  => 최대 3개 이상을 넘지 않는 것을 권장
 
 > 👍 이상적인 함수는 한 가지 일만 해야 하며 가급적 작게 만들어야 한다.
 
 - 만약 3개 이상의 매개변수가 필요하다면 하나의 매개변수를 선언하고 객체를 인수로 전달하는 것이 유리하다.
-  - 객체를 인수로 사용하는 경우 프로퍼티 키만 정확히 지정하면 매개변수의 순서를 신경 쓰지 않아도 된다. 
+  - 객체를 인수로 사용하는 경우 프로퍼티 키만 정확히 지정하면 매개변수의 순서를 신경 쓰지 않아도 된다.
   - 주의할 것은 함수 외부에서 함수 내부로 전달한 객체를 함수 내부에서 변경하면 함수 외부 객체가 변경되는 부수 효과가 발생한다.
 
 <br>
 
 ## 12.5.4 반환문
+
 > return 키워드와 표현식(반환값)으로 이뤄진 반환문을 사용해 실행 결과를 함수 외부로 반환
 
 - 함수 호출은 표현식이다.
   - 함수 호출 표현식은 return 키워드가 반환한 표현식의 평가 결과(반환값)으로 평가된다.
 
 반환문의 두 가지 역할
-1. 반환문은 함수의 실행을 중단하고 함수 몸체를 빠져나간다. 
+
+1. 반환문은 함수의 실행을 중단하고 함수 몸체를 빠져나간다.
 
 2. 반환문은 return 키워드 뒤에 오는 표현식을 평가해 반환한다.
-  - 반환값으로 사용할 표현식을 명시적으로 지정하지 않으면 undefined가 반환된다.
+
+- 반환값으로 사용할 표현식을 명시적으로 지정하지 않으면 undefined가 반환된다.
 
 - 반환문은 생략 가능하다. 함수는 암묵적으로 undefined를 반환한다.
 
-- 반환문은 함수 몸체 내부에서만 사용할 수 있다. 
-
+- 반환문은 함수 몸체 내부에서만 사용할 수 있다.
 
 <br>
 <br>
 
 # 12.6 참조에 의한 전달과 외부 상태의 변경
+
 ```jsx
 // 매개변수 primitive는 원시 값을 전달받고, obj는 객체를 전달받는다.
-function changeVal(primitive, obj){
+function changeVal(primitive, obj) {
   primitive += 100;
   obj.name = "Kim";
 }
 
 // 외부 상태
 var num = 100;
-var person = {name: 'Lee'};
+var person = { name: "Lee" };
 
 // 원시 값은 값 자체가 복사되어 전달되고 객체는 참조 값이 복사되어 전달된다.
 changeVal(num, person);
@@ -464,47 +466,48 @@ console.log(person); // {name: "Kim"}
 
 - 객체 타입 인수는 `참조 값이 복사되어 매개변수에 전달`되기 때문에 함수 몸체에서 참조 값을 통해 객체를 변경할 경우 원본이 훼손된다.
 
-<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/50bbfe73-27ed-4632-99ec-2df53f576c5c/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230321%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230321T051542Z&X-Amz-Expires=86400&X-Amz-Signature=215daa4abf6a8fa7fef6684ee0fb0e70262b61b818aff2fc67e55853ce307a81&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject">
+<img width="665" alt="image" src="https://github.com/sohyun215/javascript-deepdive/assets/79398566/cb7a4bfb-7a61-4b7f-bd66-2e71d08fc0fa">
 
 - 함수가 외부 상태를 변경하면 상태 변화를 추적하기 어려워진다.
   - 객체가 변경할 수 있는 값이며, 참조에 의한 전달 방식으로 동작하기 때문에 발생하는 부작용
-  
-- 해결 방법 중 하나는 객체를 `불변 객체`로 만들어 사용하는 것이다.    
-객체의 복사본을 새롭게 생성하는 비용은 들지만 객체를 마치 원시 값처럼 변경 불가능한 값으로 동작하게 만든다.
+- 해결 방법 중 하나는 객체를 `불변 객체`로 만들어 사용하는 것이다.  
+  객체의 복사본을 새롭게 생성하는 비용은 들지만 객체를 마치 원시 값처럼 변경 불가능한 값으로 동작하게 만든다.
 
-  - 객체의 상태 변경을 원천봉쇄하고 객체의 상태 변경이 필요한 경우에는 객체의 방어적 복사를 통해 원본 객체를 완전히 복제(깊은 복사)를 통해 새로운 객체를 생성하고 재할당을 통해 교체한다. 
-
-
+  - 객체의 상태 변경을 원천봉쇄하고 객체의 상태 변경이 필요한 경우에는 객체의 방어적 복사를 통해 원본 객체를 완전히 복제(깊은 복사)를 통해 새로운 객체를 생성하고 재할당을 통해 교체한다.
 
 <br>
 <br>
 
 # 12.7 다양한 함수의 형태
+
 ## 12.7.1 즉시 실행 함수(Immediately Invoked Function Expression)
+
 > 함수의 정의와 동시에 즉시 호출되는 함수, 단 한 번만 호출되며 다시 호출할 수 없다.
 
-- 익명 함수를 사용하는 것이 일반적 
+- 익명 함수를 사용하는 것이 일반적
+
 ```jsx
-(function(){
+(function () {
   var a = 3;
   var b = 5;
   return a * b;
-}());
+})();
 ```
 
 - 그룹 연산자 내의 기명 함수는 함수 선언문이 아니라 함수 리터럴로 평가된다.
+
 ```jsx
-(function foo(){
+(function foo() {
   var a = 3;
   var b = 5;
   return a * b;
-}());
+})();
 
 foo(); // ReferenceError
 ```
 
-
 - 즉시 실행 함수는 반드시 `그룹 연산자 (...)`로 감싸야 한다.
+
 ```jsx
 function foo(){
   // ...
@@ -513,38 +516,39 @@ function foo(){
 
 function foo() {}();
 // => function foo() {};();
-// 따라서 함수 선언문 뒤의 ()는 함수 호출 연산자가 아니라 그룹 연산자로 해석되고, 피연산자가 없기 때문에 에러가 발생한다. 
+// 따라서 함수 선언문 뒤의 ()는 함수 호출 연산자가 아니라 그룹 연산자로 해석되고, 피연산자가 없기 때문에 에러가 발생한다.
 ```
 
 - 그룹연산자의 피연산자는 값으로 평가되므로 기명 또는 무명 함수를 그룹 연산자로 감싸면 `함수 리터럴로 평가`되어 함수 객체가 된다.
 
 - 먼저 함수 리터럴을 평가해서 함수 객체를 생성할 수 있다면 그룹 연산자 이외의 연산자를 사용해도 좋다.
+
 ```jsx
 (function () {
   // ...
-}());
+})();
 
 (function () {
   // ...
 })();
 
-!function () {
+!(function () {
   // ...
-}();
+})();
 
-+function () {
++(function () {
   // ...
-}();
-
+})();
 ```
 
-- 즉시 실행 함수도 일반 함수처럼 값을 반환할 수 있고 인수를 전달할 수 있다. 
+- 즉시 실행 함수도 일반 함수처럼 값을 반환할 수 있고 인수를 전달할 수 있다.
+
 ```jsx
 var res = (function (a, b) {
-  var a = 3; 
+  var a = 3;
   var b = 5;
   return a * b;
-}(3, 5));
+})(3, 5);
 
 console.log(res); // 15
 ```
@@ -552,29 +556,30 @@ console.log(res); // 15
 <br>
 
 ## 12.7.2 재귀 함수(recursive function)
+
 > 재귀 호출(=함수가 자기 자신을 호출하는 것)을 수행하는 함수
 
-- 반복되는 처리를 반복문 없이 구현할 수 있다. 
+- 반복되는 처리를 반복문 없이 구현할 수 있다.
 
 - 함수 이름은 함수 몸체 내부에서만 유효하므로 함수 내부에서는 함수 이름을 사용해 자기 자신을 호출할 수 있다.
 
 - 재귀 함수 내에는 재귀 호출을 멈출 수 있는 **탈출 조건** 을 반드시 만들어야 한다.
+
   - 탈출 조건이 없으면 함수가 무한 호출되어 스택 오버플로(stack overflow) 에러가 발생한다.
 
 - 반복문을 사용하는 것보다 재귀 함수를 사용하는 편이 더 직관적으로 이해하기 쉬울 때만 한정적으로 사용하는 것이 바람직하다.
 
-
 ```jsx
-function factorial(n){
+function factorial(n) {
   if (n <= 1) return 1;
   return n * factorial(n - 1);
 }
 
 // 반복문
-function factorial(n){
-  if(n <= 1) return 1;
+function factorial(n) {
+  if (n <= 1) return 1;
   var res = n;
-  while(--n) res *= n;
+  while (--n) res *= n;
   return res;
 }
 ```
@@ -582,6 +587,7 @@ function factorial(n){
 <br>
 
 ## 12.7.3 중첩 함수(nested function)
+
 > 함수 내부에 정의된 함수, 내부 함수(inner function)
 
 - `외부 함수`(outer function): 중첩 함수를 포함하는 함수
@@ -593,17 +599,18 @@ function factorial(n){
 <br>
 
 ## 12.7.4 콜백 함수(callback function)
+
 > 함수의 매개변수를 통해 다른 함수의 내부로 전달되는 함수
 
 ```jsx
-function repeat1(n){
+function repeat1(n) {
   for (var i = 0; i < n; i++) console.log(i);
 }
 
 function repeat2(n) {
-    for (var i = 0; i < n; i++) {
-      if (i % 2) console.log(i);
-    } 
+  for (var i = 0; i < n; i++) {
+    if (i % 2) console.log(i);
+  }
 }
 ```
 
@@ -614,7 +621,7 @@ function repeat2(n) {
 
 ```jsx
 // 외부에서 전달받은 f를 n만큼 반복 호출
-function repeat(n, f){
+function repeat(n, f) {
   for (var i = 0; i < n; i++) {
     f(i); // i를 전달하면서 f 호출
   }
@@ -626,31 +633,34 @@ var logAll = function (i) {
 repeat(5, logAll); // 0 1 2 3 4
 
 var logOdds = function (i) {
-  if (i % 2)  console.log(i);
-}
+  if (i % 2) console.log(i);
+};
 repeat(5, logOdds); // 1 3
-
 ```
-- `repeat` 함수는 경우에 따라 변경되는 일을 `함수 f로 추상화`했고 이를 외부에서 전달받는다. 
+
+- `repeat` 함수는 경우에 따라 변경되는 일을 `함수 f로 추상화`했고 이를 외부에서 전달받는다.
 
 - 매개변수를 통해 함수의 외부에서 콜백 함수를 전달받은 함수를 `고차 함수(Higher-Order Function(HOF))`라 한다. -> 위 예제에선 repeat
 
 - 콜백 함수는 고차 함수에 전달되어 헬퍼 함수의 역할을 한다.
+
   - 중첩 함수는 고정되어 있어서 교체하기 곤란하지만, 콜백 함수는 함수 외부에서 고차 함수 내부로 주입하기 때문에 자유롭게 교체할 수 있다는 장점이 있다.
 
   - **고차함수는 콜백 함수를 자신의 일부분으로 합성한다.**
 
-- 고차 함수는 매개변수를 통해 전달받은 콜백 함수의 호출 시점을 결정해서 호출한다.    
-즉, 콜백 함수는 고차 함수에 의해 호출되며 이때 고차 함수는 필요에 따라 콜백 함수에 인수를 전달할 수 있다. 
+- 고차 함수는 매개변수를 통해 전달받은 콜백 함수의 호출 시점을 결정해서 호출한다.  
+  즉, 콜백 함수는 고차 함수에 의해 호출되며 이때 고차 함수는 필요에 따라 콜백 함수에 인수를 전달할 수 있다.
 
 - 콜백 함수가 고차 함수 내부에만 호출된다면 콜백 함수를 익명 함수 리터럴로 정의하면서 곧바로 고차 함수에 전달하는 것이 일반적이다.
+
 ```jsx
-repeat(5, function(i){
-  if (i % 2)  console.log(i);
+repeat(5, function (i) {
+  if (i % 2) console.log(i);
 });
 ```
-- 익명 함수 리터럴은 고차 함수가 호출될 때마다 평가되어 함수 객체를 생성한다.    
-따라서 고차 함수가 자주 호출된다면 함수 외부에서 콜백 함수를 정의한 후 함수 참조를 고차 함수에 전달하는 편이 효율적이다.
+
+- 익명 함수 리터럴은 고차 함수가 호출될 때마다 평가되어 함수 객체를 생성한다.  
+  따라서 고차 함수가 자주 호출된다면 함수 외부에서 콜백 함수를 정의한 후 함수 참조를 고차 함수에 전달하는 편이 효율적이다.
 
 - 콜백 함수는 함수형 프로그래밍 패러다임뿐만 아니라 비동기 처리(이벤트 처리, Ajax 통신, 타이머 함수 등)에 활용되는 중요한 패턴이다.
 
@@ -662,16 +672,19 @@ repeat(5, function(i){
 ## 12.7.5 순수 함수와 비순수 함수
 
 ### 순수 함수
+
 > 외부 상태에 의존하지도 않고 변경하지도 않는, 부수 효과가 없는 함수
+
 - 동일한 인수가 전달되면 언제나 동일한 값을 반환한다.
 
 - 오직 매개변수를 통해 함수 내부로 전달된 인수에게만 의존해 값을 생성해 반환한다.
 
 - 외부 상태에는 의존하지 않고 함수 내부 상태에만 의존한다 해도 그 내부 상태가 호출될 때마다 변화하는 값이라면 순수 함수가 아니다.
 
-- 최소한 하나 이상의 인수를 전달받는다. 
+- 최소한 하나 이상의 인수를 전달받는다.
 
 - 인수를 변경하지 않는 것이 기본이다. = 인수의 불변성을 유지한다.
+
 ```jsx
 var count = 0;
 function increase(n) {
@@ -683,11 +696,12 @@ console.log(count); // 1
 
 count = increase(count);
 console.log(count); // 2
-
 ```
+
 <br>
 
 ### 비순수 함수
+
 > 외부 상태에 의존하거나 외부 상태를 변경하는 함수
 
 - 함수의 외부 상태에 따라 반환값이 달라진다.
@@ -705,8 +719,8 @@ console.log(count); // 1
 
 increase();
 console.log(count); // 2
-
 ```
+
 - 인수를 전달받지 않고 `함수 내부에서 외부 상태를 직접 참조`하면 외부 상태에 의존하게 되어 반환값이 변할 수 있고, 외부 상태도 변경할 수 있다.
 
 - [함수 내부에서 외부 상태를 직접 참조하지 않더라도 매개변수를 통해 객체를 전달받으면 비순수 함수가 된다.](#126-참조에-의한-전달과-외부-상태의-변경)
@@ -714,10 +728,12 @@ console.log(count); // 2
 - 함수가 외부 상태를 변경하면 상태 변화를 추적하기 어려워지므로 함수 외부 상태의 변경을 지양하는 순수 함수를 사용하는 것이 좋다.
 
 ---
+
 ```html
-함수형 프로그래밍은 순수 함수와 보조 함수의 조합을 통해 외부 상태를 변경하는 부수 효과를 최소화해서 불변성을 지향하는 프로그래밍 패러다임이다. 
-
-함수형 프로그래밍은 결국 순수 함수를 통해 부수 효과를 최대한 억제해 오류를 피하고 프로그램의 안정성을 높이려는 노력의 일환이라고 할 수 있다.
-
-자바스크립트는 멀티 패러다임 언어이므로 객체지향 프로그래밍뿐만 아니라 함수형 프로그래밍을 적극적으로 활용하고 있다.
+함수형 프로그래밍은 순수 함수와 보조 함수의 조합을 통해 외부 상태를 변경하는
+부수 효과를 최소화해서 불변성을 지향하는 프로그래밍 패러다임이다. 함수형
+프로그래밍은 결국 순수 함수를 통해 부수 효과를 최대한 억제해 오류를 피하고
+프로그램의 안정성을 높이려는 노력의 일환이라고 할 수 있다. 자바스크립트는 멀티
+패러다임 언어이므로 객체지향 프로그래밍뿐만 아니라 함수형 프로그래밍을
+적극적으로 활용하고 있다.
 ```

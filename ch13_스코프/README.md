@@ -81,7 +81,7 @@ function bar() {
 
 ### 전역 스코프와 지역 스코프
 
-<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/409aa475-a857-4c3c-b316-de9526ffb9e3/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230323%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230323T035255Z&X-Amz-Expires=86400&X-Amz-Signature=54f12fdcc57bc77cac31788a48fde85e78cadd5952ea84d549989ec81f171050&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject" width=550px alt="전역 스코프와 지역 스코프 코드 예제">
+<img width="795" alt="전역 스코프와 지역 스코프 코드 예제" src="https://github.com/sohyun215/javascript-deepdive/assets/79398566/410b513d-78a0-4901-a1eb-4be8c6339e15">
 
 전역에 변수를 선언하면 전역 스코프를 갖는 전역 변수가 되고, 전역 변수는 어디서든지 참조할 수 있다.
 
@@ -103,7 +103,7 @@ inner 함수 내부에서 선언된 x 변수 이외에 이름이 같은 전역 �
 
 함수는 중첩될 수 있으므로 `함수의 지역 스코프도 중첩될 수 있다.` 이는 스코프가 함수의 중첩에 의해 `계층적 구조`를 갖는다는 것을 의미한다. ⇒ 중첩 함수의 지역 스코프는 중첩 함수를 포함하는 외부 함수의 지역 스코프와 계층적 구조를 갖는다. 이때 외부 함수의 지역 스코프를 중첩 함수의 상위 스코프라 한다.
 
-<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/70f090c1-03f2-4041-b5db-bb7207a74eb3/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230323%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230323T035347Z&X-Amz-Expires=86400&X-Amz-Signature=a0dbca0eab493ba1f764e040847f886a530f5274c8e4354bb90b5ef3abac0753&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject" width=450px height=500px alt="스코프 체인">
+<img width="313" alt="스코프 체인" src="https://github.com/sohyun215/javascript-deepdive/assets/79398566/9877cd84-74d4-4e33-86bd-dbd3381e0bbc">
 
 모든 스코프는 하나의 계층적 구조로 연결되며, 모든 지역 스코프의 최상위 스코프는 전역 스코프다.
 
@@ -111,7 +111,7 @@ inner 함수 내부에서 선언된 x 변수 이외에 이름이 같은 전역 �
 
 변수를 참조할 때 자바스크립트 엔진은 스코프 체인을 통해 **`변수를 참조하는 코드의 스코프에서 시작`** 하여 **`상위 스코프 방향으로 이동`** 하며 선언된 변수를 검색한다.
 
-스코프 체인을 물리적인 실체로 존재한다. 자바스크립트 엔진은 코드를 실행하기에 앞서 위 그림과 유사한 자료구조인 `렉시컬 환경` 을 실제로 생성한다.
+스코프 체인은 물리적인 실체로 존재한다. 자바스크립트 엔진은 코드를 실행하기에 앞서 위 그림과 유사한 자료구조인 `렉시컬 환경` 을 실제로 생성한다.
 
 변수 선언이 실행되면 변수 식별자가 렉시컬 환경에 `키`로 등록되고, 변수 할당이 일어나면 렉시컬 환경의 변수 식별자에 해당하는 값을 변경한다. 변수의 검색도 여기에서 이뤄진다.
 

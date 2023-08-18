@@ -102,7 +102,7 @@ foo = 1; // 할당문에서 할당 단계 실행
 console.log(foo); // 1
 ```
 
-<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/8838581c-c566-470d-82eb-b72b43bc051b/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230325%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230325T061850Z&X-Amz-Expires=86400&X-Amz-Signature=403e0f901bb2360a1141ea1643a02fc34c7322a59337fc312097eac72bf92b83&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject" width=450px>
+<img width="567" alt="var 키워드로 선언한 변수의 생명 주기" src="https://github.com/sohyun215/javascript-deepdive/assets/79398566/9ddffe4f-b092-4ce8-8e2e-6147b2f30cf7">
 
 <br><br>
 
@@ -122,7 +122,7 @@ foo = 1;
 console.log(foo); // 1
 ```
 
-<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/0212e43f-2397-4543-abe7-cef53174aca9/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230325%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230325T061959Z&X-Amz-Expires=86400&X-Amz-Signature=186631bd592f3e02d3047f1a6efb402a13b139d36179caeab30233ca9c718d6e&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject" width=450px>
+<img width="498" alt="let 키워드로 선언한 변수의 생명 주기" src="https://github.com/sohyun215/javascript-deepdive/assets/79398566/e6f56207-3bd2-4850-9b40-9d3b8f4114e5">
 
 <br>
 
