@@ -32,13 +32,15 @@ console.log(o); // {a: 1}
 
 - 값의 `불변성`: 원시 값을 할당한 변수에 새로운 원시 값을 재할당하면 **새로운 메모리 공간을 확보하고 재할당한 원시 값을 저장한 후, 변수는 새롭게 재할당한 원시 값을 가리킨다.** 이때 변수가 참조하던 메모리 공간의 주소가 바뀐다.
 
-  ![Untitled](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/1b5a7fa8-1536-4620-92de-98089c2ee7a8/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230319%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230319T074335Z&X-Amz-Expires=86400&X-Amz-Signature=d1f54a07af51fe36b4b549f397918fd2b7939868212d190bbdf83185a6297b98&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject)
+    <img width="1247" alt="image" src="https://github.com/sohyun215/javascript-deepdive/assets/79398566/87d6e1dd-7bb4-449a-ba4c-7fa3f58c6aeb">
+
 
 - 변수가 참조하던 메모리 공간의 주소가 변경된 이유: 변수에 할당된 원시 값이 변경 불가능한 값이기 때문이다.
 
 - 만약 원시 값이 변경 가능한 값이라면 변수가 가리키던 메모리 공간의 주소를 바꿀 필요 없이 원시 값 자체를 변경하면 된다.
     
-    ![Untitled](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/106acf96-adcb-4345-a594-c9b3d805dba4/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230319%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230319T080554Z&X-Amz-Expires=86400&X-Amz-Signature=e0d2fce2dbce3be31d6b4c4a245fc16c64d601195482b882c518029416c168ac&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject)
+    <img width="1243" alt="image" src="https://github.com/sohyun215/javascript-deepdive/assets/79398566/7a41dc8c-d637-4147-8bf4-24fe097878e4">
+
     
 
 - 불변성을 갖는 원시 값을 할당한 변수는 `재할당` 이외에 변수 값을 변경할 수 있는 방법이 없다.
@@ -105,7 +107,8 @@ var copy = score;
 
 
 
-  <img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/22375069-2310-4487-bbd7-8fa626334814/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230319%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230319T081642Z&X-Amz-Expires=86400&X-Amz-Signature=b0a66f946409767cd53d0f8abe8e63723f29f5678980574bd3b7d8ffa99e27ee&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject" width=450px>
+  <img width="1232" alt="image" src="https://github.com/sohyun215/javascript-deepdive/assets/79398566/0b1ba962-3a75-4d6f-b517-351479623016">
+
 
 이때 score 변수와 copy 변수의 값 80은 다른 메모리 공간에 저장된 별개의 값이다. ⇒ score 변수의 값을 변경해도 copy 변수의 값에는 어떠한 영향도 주지 않는다.
 
@@ -117,7 +120,7 @@ console.log(score, copy); // 100 80
 ECMAScript 사양에는 변수를 통해 메모리를 어떻게 관리해야 하는지 명확하게 정의되어 있지 않다. 따라서 실제 자바스크립트 엔진을 구현하는 제조사에 따라 실제 내부 동작 방식은 미묘한 차이가 있을 수 있다.
 
 #### 1️⃣ 새로운 80을 생성(복사)해서 메모리 주소를 전달하는 방식. 할당 시점에 두 변수가 기억하는 메모리 주소가 다르다.
-![Untitled](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/70ebb848-bbba-473b-b5de-8c53d0f9f847/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230319%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230319T081754Z&X-Amz-Expires=86400&X-Amz-Signature=1b833c2817aeae2ec9051af87abfb207a90c34d08bb9cd0cc2227ee21981c15a&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject)
+<img width="1240" alt="image" src="https://github.com/sohyun215/javascript-deepdive/assets/79398566/ab5b0e24-8bd7-4979-af68-0d53ed4fca46">
 
 
 
@@ -126,7 +129,8 @@ ECMAScript 사양에는 변수를 통해 메모리를 어떻게 관리해야 하
 
 
 #### 2️⃣ score의 변수값 80의 메모리 주소를 그대로 전달하는 방식. 할당 시점에 두 변수가 기억하는 메모리 주소가 같다.
-![Untitled](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/760add66-17ff-4fc9-9101-e450725749a6/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230319%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230319T081831Z&X-Amz-Expires=86400&X-Amz-Signature=465c67de4afd5df801b43fe5d6fc4b7b5de21dd08f92f17d308afaa4b0f032e9&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject)
+<img width="1238" alt="image" src="https://github.com/sohyun215/javascript-deepdive/assets/79398566/f68ceadc-5692-4caf-a32f-fbb05a62a5cb">
+
 2️⃣: 변수에 원시 값을 갖는 변수를 할당하는 시점에는 두 변수가 같은 원시 값을 참조하다가 어느 한쪽의 변수에 재할당이 이뤄졌을 때 비로소 새로운 메모리 공간에 재할당된 값을 저장하도록 동작할 수도 있다. (파이썬의 동작방식)
 
 <br>
@@ -176,8 +180,9 @@ var person = {
 - 객체를 할당한 변수가 기억하는 메모리 주소를 통해 메모리 공간에 접근하면 **참조 값**에 접근할 수 있다.
     - `참조 값`: 생성된 객체가 저장된 메모리 공간의 주소, 그 자체
 
-      <img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/2d8c91d7-4bd7-41c1-bd86-466bb5377033/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230319%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230319T082357Z&X-Amz-Expires=86400&X-Amz-Signature=3627e1c888e437358006e40888e144a222285bda396051f4afcb66c23ba66cfc&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject" width=300px>
 
+
+     <img width="400" alt="image" src="https://github.com/sohyun215/javascript-deepdive/assets/79398566/973ce855-7325-41f5-8de3-bd8c381be639">
 
 | | 원시 값을 할당한 변수| 객체를 할당한 변수|
 |--- |---|---|
@@ -202,7 +207,9 @@ var person = {
     ```
     
 
-    <img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/21d6fd64-598e-40d9-8a3b-1b65c49fe1dc/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230319%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230319T082517Z&X-Amz-Expires=86400&X-Amz-Signature=2dc2891204e52fc6aec31fe63f9c3d8a06982bffb733313b6356a10576371133&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject" width=300px>
+  <img width="400" alt="image" src="https://github.com/sohyun215/javascript-deepdive/assets/79398566/bcd7139f-cc25-4bcd-9d6c-1ca639bfb9f9">
+
+
 
 - 객체를 생성하고 관리하는 방식은 매우 복잡하며 비용이 많이 드는 일이다.
     - 메모리 사용의 효율성과 성능을 위해 객체는 변경 가능한 값으로 설계되어 있다.
@@ -266,7 +273,8 @@ var person = {
 var copy = person;
 ```
 
-<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/c232da29-167d-432d-a55b-0c9c84cf0f4d/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230319%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230319T082952Z&X-Amz-Expires=86400&X-Amz-Signature=a4e2dd9fa753c890e794b793047545e479193569a2caf08357b2865dba4d3acd&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject" width=500px>
+<img width="1246" alt="image" src="https://github.com/sohyun215/javascript-deepdive/assets/79398566/cec5cfa3-f4da-4141-93b8-5028d9303b4d">
+
 
 원본 person과 사본 copy는 `저장된 메모리 주소는 다르지만 동일한 참조 값을 갖는다.`   
 ⇒ 모두 동일한 객체를 가리킨다. (= 두 개의 식별자가 하나의 객체를 공유한다.)   
