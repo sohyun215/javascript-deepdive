@@ -63,7 +63,7 @@ const Person = class MyClass {};
 클래스와 생성자 함수의 정의 방식을 비교해 보면 다음과 같다.
 
 <p align="center">
-  <img src="./image/클래스_생성자함수_비교.png" alt="클래스와 생성자 함수의 정의 방식 비교" width=400 />
+  <img src="./image/클래스_생성자함수_비교.png" alt="클래스와 생성자 함수의 정의 방식 비교" width=650 />
 </p>
 
 <br />
@@ -153,7 +153,7 @@ class Person {
 ```
 
 <p align="center">
-  <img src="./image/클래스.png" alt="클래스는 함수다." width=400/>
+  <img src="./image/클래스.png" alt="클래스는 함수다." width=700/>
 </p>
 
 클래스는 평가되어 함수 객체가 된다. 함수와 동일하게 프로토타입과 연결되어 있으며 자신의 스코프 체인을 구성한다.
@@ -167,7 +167,7 @@ console.log(me);
 ```
 
 <p align="center">
-  <img src="./image/클래스_인스턴스.png" alt="Person 클래스로 생성한 인스턴스" width=400 />
+  <img src="./image/클래스_인스턴스.png" alt="Person 클래스로 생성한 인스턴스" width=500 />
 </p>
 
 Person 클래스의 constructor 내부에서 this에 추가한 `name` 프로퍼티가 인스턴스의 프로퍼티로 추가된 것을 확인할 수 있다.
@@ -267,7 +267,7 @@ const me = new Person('Lee');
 위 코드의 Person 클래스는 다음과 같이 프로토타입 체인을 생성한다.
 
 <p align="center">
-  <img src="./image/인스턴스_프로토타입_체인.png" alt="클래스로 생성한 인스턴스의 프로토타입 체인" width=400 />
+  <img src="./image/인스턴스_프로토타입_체인.png" alt="클래스로 생성한 인스턴스의 프로토타입 체인" width=500 />
 </p>
 
 클래스는 생성자 함수와 같이 인스턴스를 생성하는 생성자 함수라고 볼 수 있다. 다시 말해, 클래스는 생성자 함수와 마찬가지로 프로토타입 기반의 객체 생성 매커니즘이다.
@@ -296,7 +296,7 @@ Person.sayHi();
 ```
 
 <p align="center">
-  <img src="./image/정적_메서드_체인.png" alt="정적 메서드" width=400 />
+  <img src="./image/정적_메서드_체인.png" alt="정적 메서드" width=500 />
 </p>
 
 정적 메서드는 클래스에 바인딩된 메서드가 된다.
@@ -587,7 +587,7 @@ console.log(MyMath.increment()); // 11
 **상속에 의한 클래스 확장은 기존 클래스를 상속받아 새로운 클래스를 확장하여 정의하는 것이다.**
 
 <p align="center">
-  <img src="./image/클래스_상속.png" alt="상속에 의한 클래스 확장" width=400 />
+  <img src="./image/클래스_상속.png" alt="상속에 의한 클래스 확장" width=500 />
 </p>
 
 <br />
@@ -612,7 +612,7 @@ extends 키워드의 역할은 수퍼클래스와 서브클래스 간의 상속 
 클래스도 프로토타입을 통해 상속 관계를 구현한다.
 
 <p align="center">
-  <img src="./image/extends_키워드.png" alt="extends 키워드" width=400 />
+  <img src="./image/extends_키워드.png" alt="extends 키워드" width=500 />
 </p>
 
 수퍼클래스와 서브클래스는 인스턴스의 프로토타입 체인뿐 아니라 클래스 간의 프로토타입 체인도 생성한다.
